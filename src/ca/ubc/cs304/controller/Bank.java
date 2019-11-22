@@ -126,4 +126,5 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
 		Bank bank = new Bank();
 		bank.start();
 	}
+	//comentario teste
 }
