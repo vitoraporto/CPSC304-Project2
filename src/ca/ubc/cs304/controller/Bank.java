@@ -4,7 +4,6 @@ import ca.ubc.cs304.database.DatabaseConnectionHandler;
 import ca.ubc.cs304.delegates.LoginWindowDelegate;
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.BranchModel;
-import ca.ubc.cs304.ui.LoginWindow;
 import ca.ubc.cs304.ui.TerminalTransactions;
 
 /**
@@ -12,15 +11,13 @@ import ca.ubc.cs304.ui.TerminalTransactions;
  */
 public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
 	private DatabaseConnectionHandler dbHandler = null;
-	private LoginWindow loginWindow = null;
 
 	public Bank() {
 		dbHandler = new DatabaseConnectionHandler();
 	}
 	
 	private void start() {
-		loginWindow = new LoginWindow();
-		loginWindow.showFrame(this);
+		login("ora_vitorap","a68475847");
 	}
 	
 	/**
@@ -32,19 +29,11 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
 		boolean didConnect = dbHandler.login(username, password);
 
 		if (didConnect) {
-			// Once connected, remove login window and start text transaction flow
-			loginWindow.dispose();
-
 			TerminalTransactions transaction = new TerminalTransactions();
 			transaction.showMainMenu(this);
 		} else {
-			loginWindow.handleLoginFailed();
-
-			if (loginWindow.hasReachedMaxLoginAttempts()) {
-				loginWindow.dispose();
-				System.out.println("You have exceeded your number of allowed attempts");
-				System.exit(-1);
-			}
+			System.out.println("login error");
+			System.exit(-1);
 		}
 	}
 	
