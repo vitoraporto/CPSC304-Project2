@@ -63,7 +63,12 @@ public class TerminalTransactions {
 	}
 
 	private void handleClerk() {
-		//todo
+		System.out.println("Give the access key or type back:");
+		String inputKey = readLine();
+		while (!inputKey.equals("back")){
+			ClerkTransactions clerk = new ClerkTransactions();
+			clerk.login(inputKey);
+		}
 	}
 
 	private void handleCustomer(){
@@ -100,5 +105,15 @@ public class TerminalTransactions {
 			}
 		}
 		return input;
+	}
+
+	private String readLine() {
+		String result = null;
+		try {
+			result = bufferedReader.readLine();
+		} catch (IOException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+		}
+		return result;
 	}
 }
