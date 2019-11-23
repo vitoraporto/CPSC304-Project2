@@ -2,6 +2,9 @@ package ca.ubc.cs304.ui;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class ClerkTransactions extends TerminalTransaction{
 
     private static String accessKey = "123456";
@@ -17,6 +20,7 @@ public class ClerkTransactions extends TerminalTransaction{
     }
 
     public void clerkMenu(){
+        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int choice = INVALID_INPUT;
         while (true){
             System.out.println("Choose one of the following options:");
@@ -25,7 +29,7 @@ public class ClerkTransactions extends TerminalTransaction{
             System.out.println("2. Return a vehicle");
             System.out.println("3. Generate a report");
             System.out.println("4. Logout");
-
+            System.out.print("Please choose one of the above 4 options: ");
             choice = readInteger(false);
 
             System.out.println(" ");
@@ -98,7 +102,15 @@ public class ClerkTransactions extends TerminalTransaction{
             System.out.println("Reservation confirmation number:");
             conf_num = readLine().trim();
         }
+        rent(conf_num);
+    }
 
+    private void rentWithNoReservation() {
+        String conf_num = reserve();
+        rent(conf_num);
+    }
+
+    private void rent(String conf_num){
         System.out.println("Credit card information:");
 
         String card_name = null;
@@ -120,9 +132,5 @@ public class ClerkTransactions extends TerminalTransaction{
         }
 
         delegate.rent(conf_num,card_name,card_name,exp_date);
-    }
-
-    private void rentWithNoReservation() {
-        //todo
     }
 }

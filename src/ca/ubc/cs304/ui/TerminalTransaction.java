@@ -14,6 +14,12 @@ public abstract class TerminalTransaction {
     BufferedReader bufferedReader = null;
     TerminalTransactionsDelegate delegate = null;
 
+    //should return confirmation number
+    String reserve() {
+        //todo
+        return null;
+    }
+
     int readInteger(boolean allowEmpty) {
         String line = null;
         int input = INVALID_INPUT;
