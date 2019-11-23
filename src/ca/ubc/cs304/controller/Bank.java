@@ -3,6 +3,7 @@ package ca.ubc.cs304.controller;
 import ca.ubc.cs304.database.DatabaseConnectionHandler;
 import ca.ubc.cs304.delegates.LoginWindowDelegate;
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
+import ca.ubc.cs304.model.RentModel;
 import ca.ubc.cs304.ui.GeneralTransactions;
 
 /**
@@ -50,8 +51,8 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
     }
 
     @Override
-    public void rent(String conf_num, String card_name, String card_name1, String exp_date) {
-        dbHandler.rent(conf_num, card_name, card_name1, exp_date);
+    public RentModel rent(String conf_num, String card_name, String card_name1, String exp_date) {
+        return dbHandler.rent(conf_num, card_name, card_name1, exp_date);
     }
 
     /**

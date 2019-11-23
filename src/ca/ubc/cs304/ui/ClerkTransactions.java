@@ -1,6 +1,7 @@
 package ca.ubc.cs304.ui;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
+import ca.ubc.cs304.model.RentModel;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -131,6 +132,7 @@ public class ClerkTransactions extends TerminalTransaction{
             exp_date = readLine().trim();
         }
 
-        delegate.rent(conf_num,card_name,card_name,exp_date);
+        RentModel rent = delegate.rent(conf_num,card_name,card_name,exp_date);
+        rent.printRentInformations();
     }
 }

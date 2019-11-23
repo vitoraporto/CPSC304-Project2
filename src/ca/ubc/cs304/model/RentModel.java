@@ -34,4 +34,17 @@ public class RentModel {
     public String getDuration() {
         return duration;
     }
+
+    public void printRentInformations() {
+        System.out.println("Confirmation number:");
+        System.out.println(getConfirmationNumber());
+        System.out.println("Reservation date:");
+        System.out.println(getReservationDate());
+        System.out.println("Car type:");
+        System.out.println(getCarType());
+        System.out.println("Location:");
+        System.out.println(getLocation());
+        System.out.println("Duration of rental period:");
+        System.out.println(getDuration());
+    }
 }

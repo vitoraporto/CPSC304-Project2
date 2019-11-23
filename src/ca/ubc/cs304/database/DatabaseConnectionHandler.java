@@ -1,5 +1,7 @@
 package ca.ubc.cs304.database;
 
+import ca.ubc.cs304.model.RentModel;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -59,7 +61,8 @@ public class DatabaseConnectionHandler {
 		}
 	}
 
-	public void rent(String conf_num, String card_name, String card_name1, String exp_date) {
+	public RentModel rent(String conf_num, String card_name, String card_name1, String exp_date) {
 		//todo
+		return null;
 	}
 }

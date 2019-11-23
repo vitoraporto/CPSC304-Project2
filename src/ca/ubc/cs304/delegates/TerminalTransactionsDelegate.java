@@ -1,5 +1,7 @@
 package ca.ubc.cs304.delegates;
 
+import ca.ubc.cs304.model.RentModel;
+
 /**
  * This interface uses the delegation design pattern where instead of having
  * the TerminalTransactions class try to do everything, it will only
@@ -13,5 +15,5 @@ public interface TerminalTransactionsDelegate {
 	
 	public void terminalTransactionsFinished();
 
-    void rent(String conf_num, String card_name, String card_name1, String exp_date);
+    RentModel rent(String conf_num, String card_name, String card_name1, String exp_date);
 }
