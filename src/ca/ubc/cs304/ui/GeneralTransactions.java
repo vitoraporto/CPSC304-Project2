@@ -10,16 +10,11 @@ import ca.ubc.cs304.model.BranchModel;
 /**
  * The class is only responsible for handling terminal text inputs. 
  */
-public class TerminalTransactions {
-	private static final String EXCEPTION_TAG = "[EXCEPTION]";
-	private static final String WARNING_TAG = "[WARNING]";
-	private static final int INVALID_INPUT = Integer.MIN_VALUE;
-	private static final int EMPTY_INPUT = 0;
-	
-	private BufferedReader bufferedReader = null;
+public class GeneralTransactions extends TerminalTransaction{
+
 	private TerminalTransactionsDelegate delegate = null;
 
-	public TerminalTransactions() {
+	public GeneralTransactions() {
 	}
 
 	/**
@@ -87,33 +82,5 @@ public class TerminalTransactions {
 		}
 		
 		delegate.terminalTransactionsFinished();
-	}
-	
-	private int readInteger(boolean allowEmpty) {
-		String line = null;
-		int input = INVALID_INPUT;
-		try {
-			line = bufferedReader.readLine();
-			input = Integer.parseInt(line);
-		} catch (IOException e) {
-			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
-		} catch (NumberFormatException e) {
-			if (allowEmpty && line.length() == 0) {
-				input = EMPTY_INPUT;
-			} else {
-				System.out.println(WARNING_TAG + " Your input was not an integer");
-			}
-		}
-		return input;
-	}
-
-	private String readLine() {
-		String result = null;
-		try {
-			result = bufferedReader.readLine();
-		} catch (IOException e) {
-			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
-		}
-		return result;
 	}
 }

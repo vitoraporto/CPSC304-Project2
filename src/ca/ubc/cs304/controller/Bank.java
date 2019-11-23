@@ -4,7 +4,7 @@ import ca.ubc.cs304.database.DatabaseConnectionHandler;
 import ca.ubc.cs304.delegates.LoginWindowDelegate;
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.BranchModel;
-import ca.ubc.cs304.ui.TerminalTransactions;
+import ca.ubc.cs304.ui.GeneralTransactions;
 
 /**
  * This is the main controller class that will orchestrate everything.
@@ -29,7 +29,7 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
 		boolean didConnect = dbHandler.login(username, password);
 
 		if (didConnect) {
-			TerminalTransactions transaction = new TerminalTransactions();
+			GeneralTransactions transaction = new GeneralTransactions();
 			transaction.showMainMenu(this);
 		} else {
 			System.out.println("login error");
