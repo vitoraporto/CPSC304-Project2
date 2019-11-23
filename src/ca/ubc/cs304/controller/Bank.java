@@ -5,7 +5,10 @@ import ca.ubc.cs304.delegates.LoginWindowDelegate;
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.RentModel;
 import ca.ubc.cs304.model.ReserveModel;
+import ca.ubc.cs304.model.VehicleModel;
 import ca.ubc.cs304.ui.GeneralTransactions;
+
+import java.util.ArrayList;
 
 /**
  * This is the main controller class that will orchestrate everything.
@@ -64,6 +67,11 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
 	@Override
 	public int numberVehicles(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
 		return dbHandler.numberVehicles(carType, location, pickUpDate, pickUpTime, returnDate, returnTime);
+	}
+
+	@Override
+	public ArrayList<VehicleModel> vehiclesInformation(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
+		return dbHandler.vehiclesInformation(carType, location, pickUpDate, pickUpTime, returnDate, returnTime);
 	}
 
 	/**

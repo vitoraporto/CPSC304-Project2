@@ -2,10 +2,12 @@ package ca.ubc.cs304.database;
 
 import ca.ubc.cs304.model.RentModel;
 import ca.ubc.cs304.model.ReserveModel;
+import ca.ubc.cs304.model.VehicleModel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * This class handles all database related transactions
@@ -75,5 +77,10 @@ public class DatabaseConnectionHandler {
 	public int numberVehicles(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
 		//todo
 		return 0;
+	}
+
+	public ArrayList<VehicleModel> vehiclesInformation(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
+		//todo
+		return null;
 	}
 }

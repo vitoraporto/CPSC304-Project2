@@ -2,9 +2,11 @@ package ca.ubc.cs304.ui;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.ReserveModel;
+import ca.ubc.cs304.model.VehicleModel;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class CustomerTransactions extends TerminalTransaction{
 
@@ -89,6 +91,27 @@ public class CustomerTransactions extends TerminalTransaction{
 
         System.out.println("Number of available vehicles:");
         System.out.println(delegate.numberVehicles(carType,location, pickUpDate,pickUpTime,returnDate,returnTime));
-        //todo
+
+        int choice = INVALID_INPUT;
+        while (choice != 2 && choice!=1){
+            System.out.println("Do you want information about available vehicles?");
+            System.out.println();
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+
+            choice = readInteger(false);
+
+            System.out.println(" ");
+            if (choice == 1){
+                ArrayList<VehicleModel> vehicles = delegate.vehiclesInformation(carType,location, pickUpDate,pickUpTime,returnDate,returnTime);
+                System.out.println("Vehicles information:");
+                for (int i = 0; i < vehicles.size(); i++) {
+                    VehicleModel vehicle = vehicles.get(i);
+                    vehicle.printInformation();
+                }
+            }
+        }
+
+
     }
 }
