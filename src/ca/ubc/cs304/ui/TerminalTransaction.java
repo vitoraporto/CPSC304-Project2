@@ -1,6 +1,7 @@
 package ca.ubc.cs304.ui;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
+import ca.ubc.cs304.model.ReserveModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,8 +15,7 @@ public abstract class TerminalTransaction {
     BufferedReader bufferedReader = null;
     TerminalTransactionsDelegate delegate = null;
 
-    //should return confirmation number
-    String reserve() {
+    ReserveModel reserve() {
         //todo
         return null;
     }

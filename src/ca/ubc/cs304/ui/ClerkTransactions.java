@@ -107,7 +107,7 @@ public class ClerkTransactions extends TerminalTransaction{
     }
 
     private void rentWithNoReservation() {
-        String conf_num = reserve();
+        String conf_num = reserve().getConfirmationNumber();
         rent(conf_num);
     }
 
