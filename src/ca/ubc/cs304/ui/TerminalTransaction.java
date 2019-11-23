@@ -16,8 +16,43 @@ public abstract class TerminalTransaction {
     TerminalTransactionsDelegate delegate = null;
 
     ReserveModel reserve() {
-        //todo
-        return null;
+        String location = null;
+        while (location == null || location.length() <= 0){
+            System.out.println("Location:");
+            location = readLine().trim();
+        }
+
+        String carType = null;
+        while (carType == null || carType.length() <= 0){
+            System.out.println("Type of the vehicle:");
+            carType = readLine().trim();
+        }
+
+        String pickUpDate = null;
+        while (pickUpDate == null || pickUpDate.length() <= 0){
+            System.out.println("Pick up date:");
+            pickUpDate = readLine().trim();
+        }
+
+        String pickUpTime = null;
+        while (pickUpTime == null || pickUpTime.length() <= 0){
+            System.out.println("Pick up time:");
+            pickUpTime = readLine().trim();
+        }
+
+        String returnDate = null;
+        while (returnDate == null || returnDate.length() <= 0){
+            System.out.println("Return date:");
+            returnDate = readLine().trim();
+        }
+
+        String returnTime = null;
+        while (returnTime == null || returnTime.length() <= 0){
+            System.out.println("Return time:");
+            returnTime = readLine().trim();
+        }
+
+        return delegate.reserve(location, carType,pickUpDate,pickUpTime,returnDate,returnTime);
     }
 
     int readInteger(boolean allowEmpty) {

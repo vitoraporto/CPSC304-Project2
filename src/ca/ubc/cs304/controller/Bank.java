@@ -4,6 +4,7 @@ import ca.ubc.cs304.database.DatabaseConnectionHandler;
 import ca.ubc.cs304.delegates.LoginWindowDelegate;
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.RentModel;
+import ca.ubc.cs304.model.ReserveModel;
 import ca.ubc.cs304.ui.GeneralTransactions;
 
 /**
@@ -55,7 +56,17 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
         return dbHandler.rent(conf_num, card_name, card_name1, exp_date);
     }
 
-    /**
+	@Override
+	public ReserveModel reserve(String location, String carType, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
+		return dbHandler.reserve(location, carType, pickUpDate, pickUpTime, returnDate, returnTime);
+	}
+
+	@Override
+	public int numberVehicles(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
+		return dbHandler.numberVehicles(carType, location, pickUpDate, pickUpTime, returnDate, returnTime);
+	}
+
+	/**
 	 * Main method called at launch time
 	 */
 	public static void main(String args[]) {

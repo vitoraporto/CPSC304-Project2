@@ -1,6 +1,7 @@
 package ca.ubc.cs304.database;
 
 import ca.ubc.cs304.model.RentModel;
+import ca.ubc.cs304.model.ReserveModel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -64,5 +65,15 @@ public class DatabaseConnectionHandler {
 	public RentModel rent(String conf_num, String card_name, String card_name1, String exp_date) {
 		//todo
 		return null;
+	}
+
+    public ReserveModel reserve(String location, String carType, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
+		//todo
+		return null;
+	}
+
+	public int numberVehicles(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
+		//todo
+		return 0;
 	}
 }

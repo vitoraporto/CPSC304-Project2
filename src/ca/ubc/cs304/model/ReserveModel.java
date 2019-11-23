@@ -35,4 +35,17 @@ public class ReserveModel {
     public String getReturnDate() {
         return returnDate;
     }
+
+    public void printReserveInformations() {
+        System.out.println("Confirmation number:");
+        System.out.println(getConfirmationNumber());
+        System.out.println("Location:");
+        System.out.println(getLocation());
+        System.out.println("Car type:");
+        System.out.println(getCarType());
+        System.out.println("Pickup Date:");
+        System.out.println(getPickUpDate());
+        System.out.println("Return date:");
+        System.out.println(getReturnDate());
+    }
 }

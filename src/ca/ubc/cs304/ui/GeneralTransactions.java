@@ -64,7 +64,8 @@ public class GeneralTransactions extends TerminalTransaction{
 	}
 
 	private void handleCustomer(){
-		//todo
+		CustomerTransactions customer = new CustomerTransactions();
+		customer.customerMenu(delegate);
 	}
 
 	private void handleQuitOption() {
