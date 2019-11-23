@@ -5,12 +5,14 @@ public class VehicleModel {
     private final String make;
     private final String model;
     private final int year;
+    private final String carType;
 
-    public VehicleModel(String plate, String make, String model, int year) {
+    public VehicleModel(String plate, String make, String model, int year, String category) {
         this.plate = plate;
         this.make = make;
         this.model = model;
         this.year = year;
+        this.carType = category;
     }
 
     public String getPlate() {
@@ -29,7 +31,9 @@ public class VehicleModel {
         return year;
     }
 
+    public String getCarType() { return carType; }
+
     public void printInformation() {
-        System.out.println("License plate: " + getPlate() + " Make: " + getMake() + " Model: " + getModel() + " Year: " + getYear());
+        System.out.println("License plate: " + getPlate() + " Make: " + getMake() + " Model: " + getModel() + " Year: " + getYear() + " Car type: " + getCarType());
     }
 }

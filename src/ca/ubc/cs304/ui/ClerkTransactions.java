@@ -102,7 +102,56 @@ public class ClerkTransactions extends TerminalTransaction{
     }
 
     private void handleReports() {
-        //todo
+        int choice = INVALID_INPUT;
+        while (true){
+            System.out.println("Choose report type:");
+            System.out.println();
+            System.out.println("1. Daily Rentals");
+            System.out.println("2. Daily Rentals for Branch");
+            System.out.println("3. Daily Returns");
+            System.out.println("4. Daily Returns for Branch");
+            System.out.print("Please choose one of the above 4 options: ");
+
+            choice = readInteger(false);
+
+            System.out.println(" ");
+
+            if (choice != INVALID_INPUT) {
+                switch (choice) {
+                    case 1:
+                        dailyRentalsReport();
+                        break;
+                    case 2:
+                        dailyRentalsBranchReport();
+                        break;
+                    case 3:
+                        dailyReturnsReport();
+                        break;
+                    case 4:
+                        dailyReturnsBranchReport();
+                        break;
+                    default:
+                        System.out.println(WARNING_TAG + " The number that you entered was not a valid option.");
+                        break;
+                }
+            }
+        }
+    }
+
+    private void dailyReturnsBranchReport() {
+        //TODO
+    }
+
+    private void dailyReturnsReport() {
+        //TODO
+    }
+
+    private void dailyRentalsBranchReport() {
+        //TODO
+    }
+
+    private void dailyRentalsReport() {
+        //TODO
     }
 
     private void rentWithReservation() {
