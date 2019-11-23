@@ -57,7 +57,7 @@ public class GeneralTransactions extends TerminalTransaction{
 	private void handleClerk() {
 		System.out.println("Give the access key or type back:");
 		String inputKey = readLine();
-		while (!inputKey.equals("back")){
+		if (!inputKey.equals("back")){
 			ClerkTransactions clerk = new ClerkTransactions();
 			clerk.login(inputKey, delegate);
 		}

@@ -81,6 +81,10 @@ public class DatabaseConnectionHandler {
 
 	public ArrayList<VehicleModel> vehiclesInformation(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime) {
 		//todo
-		return null;
+		return new ArrayList<>();
+	}
+
+	public void return_(String plate) {
+		//todo
 	}
 }

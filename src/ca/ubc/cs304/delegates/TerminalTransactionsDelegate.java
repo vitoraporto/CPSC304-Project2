@@ -26,4 +26,6 @@ public interface TerminalTransactionsDelegate {
     int numberVehicles(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime);
 
     ArrayList<VehicleModel> vehiclesInformation(String carType, String location, String pickUpDate, String pickUpTime, String returnDate, String returnTime);
+
+    void return_(String plate);
 }

@@ -74,6 +74,11 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
 		return dbHandler.vehiclesInformation(carType, location, pickUpDate, pickUpTime, returnDate, returnTime);
 	}
 
+	@Override
+	public void return_(String plate) {
+    	dbHandler.return_(plate);
+	}
+
 	/**
 	 * Main method called at launch time
 	 */

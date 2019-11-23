@@ -16,6 +16,7 @@ public class ClerkTransactions extends TerminalTransaction{
     public void login(String inputKey, TerminalTransactionsDelegate delegate) {
         this.delegate = delegate;
         if (inputKey.equals(accessKey)){
+            System.out.println("login line 19 clerkTransactions");
             clerkMenu();
         }
     }
@@ -23,6 +24,7 @@ public class ClerkTransactions extends TerminalTransaction{
     public void clerkMenu(){
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int choice = INVALID_INPUT;
+        System.out.println("clerkMenu() line 26");
         while (true){
             System.out.println("Choose one of the following options:");
             System.out.println();
@@ -66,6 +68,7 @@ public class ClerkTransactions extends TerminalTransaction{
             System.out.println("1. Yes");
             System.out.println("2. No");
             System.out.println("3. Back");
+            System.out.print("Please choose one of the above 3 options: ");
 
             choice = readInteger(false);
 
@@ -90,7 +93,12 @@ public class ClerkTransactions extends TerminalTransaction{
     }
 
     private void handleReturn() {
-        //todo
+        String plate = null;
+        while (plate == null || plate.length() <= 0){
+            System.out.println("License plate:");
+            plate = readLine().trim();
+        }
+        delegate.return_(plate);
     }
 
     private void handleReports() {
@@ -116,23 +124,24 @@ public class ClerkTransactions extends TerminalTransaction{
 
         String card_name = null;
         while (card_name == null || card_name.length() <= 0){
-            System.out.println("    Name:");
+            System.out.print("    Name:");
             card_name = readLine().trim();
         }
 
         String card_no = null;
         while (card_no == null || card_no.length() <= 0){
-            System.out.println("    Number:");
+            System.out.print("    Number:");
             card_no = readLine().trim();
         }
 
         String exp_date = null;
         while (exp_date == null || exp_date.length() <= 0){
-            System.out.println("    Expiration date:");
+            System.out.print("    Expiration date:");
             exp_date = readLine().trim();
         }
 
         RentModel rent = delegate.rent(conf_num,card_name,card_name,exp_date);
-        rent.printRentInformations();
+        if (rent != null)
+            rent.printRentInformations();
     }
 }

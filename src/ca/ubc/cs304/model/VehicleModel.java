@@ -30,6 +30,6 @@ public class VehicleModel {
     }
 
     public void printInformation() {
-        System.out.println("license plate: " + getPlate() + " Make: " + getMake() + " Model: " + getModel() + " Year: " + getYear());
+        System.out.println("License plate: " + getPlate() + " Make: " + getMake() + " Model: " + getModel() + " Year: " + getYear());
     }
 }

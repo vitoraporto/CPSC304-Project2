@@ -48,7 +48,8 @@ public class CustomerTransactions extends TerminalTransaction{
 
     private void handleReserve() {
         ReserveModel reserve = reserve();
-        reserve.printReserveInformations();
+        if (reserve != null)
+            reserve.printReserveInformations();
     }
 
     private void viewVehicles() {
