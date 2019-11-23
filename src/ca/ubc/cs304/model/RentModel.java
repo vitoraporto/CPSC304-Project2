@@ -1,17 +1,37 @@
 package ca.ubc.cs304.model;
 
 public class RentModel {
-    private final String address;
-    private final String city;
-    private final int id;
-    private final String name;
-    private final int phoneNumber;
+    private final String confirmationNumber;
+    private final String reservationDate;
+    private final String carType;
+    private final String location;
+    private final String duration;
 
-    public RentModel(String address, String city, int id, String name, int phoneNumber) {
-        this.address = address;
-        this.city = city;
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
+    public RentModel(String confirmationNumber, String reservationDate, String carType, String location, String duration) {
+        this.confirmationNumber = confirmationNumber;
+        this.reservationDate = reservationDate;
+        this.carType = carType;
+        this.location = location;
+        this.duration = duration;
+    }
+
+    public String getConfirmationNumber() {
+        return confirmationNumber;
+    }
+
+    public String getReservationDate() {
+        return reservationDate;
+    }
+
+    public String getCarType() {
+        return carType;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getDuration() {
+        return duration;
     }
 }
