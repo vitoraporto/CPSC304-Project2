@@ -12,8 +12,6 @@ import ca.ubc.cs304.model.BranchModel;
  */
 public class GeneralTransactions extends TerminalTransaction{
 
-	private TerminalTransactionsDelegate delegate = null;
-
 	public GeneralTransactions() {
 	}
 
@@ -62,7 +60,7 @@ public class GeneralTransactions extends TerminalTransaction{
 		String inputKey = readLine();
 		while (!inputKey.equals("back")){
 			ClerkTransactions clerk = new ClerkTransactions();
-			clerk.login(inputKey);
+			clerk.login(inputKey, delegate);
 		}
 	}
 

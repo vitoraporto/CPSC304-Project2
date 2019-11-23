@@ -107,8 +107,13 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
     	
     	System.exit(0);
     }
-    
-	/**
+
+    @Override
+    public void rent(String conf_num, String card_name, String card_name1, String exp_date) {
+        dbHandler.rent(conf_num, card_name, card_name1, exp_date);
+    }
+
+    /**
 	 * Main method called at launch time
 	 */
 	public static void main(String args[]) {

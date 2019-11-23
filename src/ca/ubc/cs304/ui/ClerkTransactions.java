@@ -1,5 +1,7 @@
 package ca.ubc.cs304.ui;
 
+import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
+
 public class ClerkTransactions extends TerminalTransaction{
 
     private static String accessKey = "123456";
@@ -7,7 +9,8 @@ public class ClerkTransactions extends TerminalTransaction{
     public ClerkTransactions(){
     }
 
-    public void login(String inputKey) {
+    public void login(String inputKey, TerminalTransactionsDelegate delegate) {
+        this.delegate = delegate;
         if (inputKey.equals(accessKey)){
             clerkMenu();
         }
@@ -57,7 +60,7 @@ public class ClerkTransactions extends TerminalTransaction{
             System.out.println();
             System.out.println("1. Yes");
             System.out.println("2. No");
-            System.out.println("3. Logout");
+            System.out.println("3. Back");
 
             choice = readInteger(false);
 
@@ -90,8 +93,36 @@ public class ClerkTransactions extends TerminalTransaction{
     }
 
     private void rentWithReservation() {
+        String conf_num = null;
+        while (conf_num == null || conf_num.length() <= 0){
+            System.out.println("Reservation confirmation number:");
+            conf_num = readLine().trim();
+        }
+
+        System.out.println("Credit card information:");
+
+        String card_name = null;
+        while (card_name == null || card_name.length() <= 0){
+            System.out.println("    Name:");
+            card_name = readLine().trim();
+        }
+
+        String card_no = null;
+        while (card_no == null || card_no.length() <= 0){
+            System.out.println("    Number:");
+            card_no = readLine().trim();
+        }
+
+        String exp_date = null;
+        while (exp_date == null || exp_date.length() <= 0){
+            System.out.println("    Expiration date:");
+            exp_date = readLine().trim();
+        }
+
+        delegate.rent(conf_num,card_name,card_name,exp_date);
     }
 
     private void rentWithNoReservation() {
+        //todo
     }
 }

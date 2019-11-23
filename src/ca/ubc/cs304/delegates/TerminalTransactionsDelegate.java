@@ -18,4 +18,6 @@ public interface TerminalTransactionsDelegate {
 	public void updateBranch(int branchId, String name);
 	
 	public void terminalTransactionsFinished();
+
+    void rent(String conf_num, String card_name, String card_name1, String exp_date);
 }

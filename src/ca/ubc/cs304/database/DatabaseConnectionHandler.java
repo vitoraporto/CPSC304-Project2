@@ -162,4 +162,8 @@ public class DatabaseConnectionHandler {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
 	}
+
+	public void rent(String conf_num, String card_name, String card_name1, String exp_date) {
+		//todo
+	}
 }

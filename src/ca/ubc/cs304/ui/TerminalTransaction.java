@@ -1,5 +1,7 @@
 package ca.ubc.cs304.ui;
 
+import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -10,6 +12,7 @@ public abstract class TerminalTransaction {
     static final int EMPTY_INPUT = 0;
 
     BufferedReader bufferedReader = null;
+    TerminalTransactionsDelegate delegate = null;
 
     int readInteger(boolean allowEmpty) {
         String line = null;
