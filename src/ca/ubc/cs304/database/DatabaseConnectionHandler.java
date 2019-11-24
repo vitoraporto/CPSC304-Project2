@@ -254,4 +254,12 @@ public class DatabaseConnectionHandler {
 	public void vehiclesInformation(ViewVehiclesModel vvm) {
 		//todo
 	}
+
+	public void dailyRentalsReport(RentReportModel rentReportModel) {
+		//todo
+	}
+
+	public void dailyRentalsBranchReport(BranchRentReportModel branchRentReportModel) {
+		//todo
+	}
 }

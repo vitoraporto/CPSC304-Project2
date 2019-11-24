@@ -20,7 +20,7 @@ public abstract class TerminalTransaction {
     BufferedReader bufferedReader = null;
     TerminalTransactionsDelegate delegate = null;
 
-    void reserve() {
+    String reserve() {
         String location = null;
         while (location == null || location.length() <= 0){
             System.out.println("Location: ");
@@ -81,6 +81,8 @@ public abstract class TerminalTransaction {
         System.out.println(reserveModel.getFrom());
         System.out.println("Return date:");
         System.out.println(reserveModel.getTo());
+
+        return reserveModel.getConfNum();
     }
 
     int readInteger(boolean allowEmpty) {

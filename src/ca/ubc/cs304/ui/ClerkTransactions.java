@@ -1,15 +1,11 @@
 package ca.ubc.cs304.ui;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
-import ca.ubc.cs304.model.VehicleModel;
-import ca.ubc.cs304.model.RentModel;
-import ca.ubc.cs304.model.ReserveModel;
-import ca.ubc.cs304.model.ReturnModel;
-import ca.ubc.cs304.model.VehicleTypeModel;
-import ca.ubc.cs304.model.CustomerModel;
+import ca.ubc.cs304.model.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Set;
 
 public class ClerkTransactions extends TerminalTransaction{
 
@@ -151,11 +147,53 @@ public class ClerkTransactions extends TerminalTransaction{
     }
 
     private void dailyRentalsBranchReport() {
-        //TODO
+        String branch = null;
+        while (branch == null || branch.length() <= 0){
+            System.out.println("Select branch:");
+            branch = readLine().trim();
+        }
+        BranchRentReportModel branchRentReportModel = new BranchRentReportModel(branch);
+        delegate.dailyRentalsBranchReport(branchRentReportModel);
+
+        System.out.println("Daily Rentals:");
+        for (int i = 0; i < branchRentReportModel.getVehicles().size(); i++) {
+            VehicleModel vehicle = branchRentReportModel.getVehicles().get(i);
+            System.out.println("License plate: " + vehicle.getVlicense() + " Make: " + vehicle.getMake() + " Model: " + vehicle.getModel() + " Year: " + vehicle.getYear() + " Car type: " + vehicle.getVtnmae() + " Location: " + vehicle.getLoc());
+        }
+
+        System.out.println("Number of vehicles rented per category:");
+        Set<String> categories = branchRentReportModel.getVehiclesPerCategory().keySet();
+        for (String category:categories) {
+            System.out.println(category + ": " + branchRentReportModel.getVehiclesPerCategory().remove(category));
+        }
+
+
+        System.out.println("Total number of new rentals: " + branchRentReportModel.getTotalRentals());
     }
 
     private void dailyRentalsReport() {
-        //TODO
+        RentReportModel rentReportModel = new RentReportModel();
+        delegate.dailyRentalsReport(rentReportModel);
+        System.out.println("Daily Rentals:");
+        for (int i = 0; i < rentReportModel.getVehicles().size(); i++) {
+            VehicleModel vehicle = rentReportModel.getVehicles().get(i);
+            System.out.println("License plate: " + vehicle.getVlicense() + " Make: " + vehicle.getMake() + " Model: " + vehicle.getModel() + " Year: " + vehicle.getYear() + " Car type: " + vehicle.getVtnmae() + " Location: " + vehicle.getLoc());
+        }
+
+        System.out.println("Number of vehicles rented per category:");
+        Set<String> categories = rentReportModel.getVehiclesPerCategory().keySet();
+        for (String category:categories) {
+            System.out.println(category + ": " + rentReportModel.getVehiclesPerCategory().remove(category));
+        }
+
+        System.out.println("Number of rentals at each branch:");
+        Set<String> branches = rentReportModel.getRentalsPerBranch().keySet();
+        for (String branch:branches) {
+            System.out.println(branch + ": " + rentReportModel.getRentalsPerBranch().remove(branch));
+        }
+
+
+        System.out.println("Total number of new rentals: " + rentReportModel.getTotalRentals());
     }
 
     private void rentWithReservation() {
@@ -168,9 +206,8 @@ public class ClerkTransactions extends TerminalTransaction{
     }
 
     private void rentWithNoReservation() {
-        Integer confNum = (int)(Math.random() * 10000);
-        String c = Integer.toString(confNum);
-        rent(c);
+        String conf_num = reserve();
+        rent(conf_num);
     }
 
     private void rent(String conf_num){
@@ -199,5 +236,16 @@ public class ClerkTransactions extends TerminalTransaction{
 
         RentModel rentModel = new RentModel(rid, conf_num, card_name, card_no, exp_date);
         delegate.rent(rentModel);
+
+        System.out.println("Confirmation number:");
+        System.out.println(rentModel.getConfNum());
+        System.out.println("Reservation date:");
+        System.out.println(rentModel.getFrom());
+        System.out.println("Car type:");
+        System.out.println(rentModel.getVtname());
+        System.out.println("Location:");
+        System.out.println(rentModel.getLoc());
+        System.out.println("Duration of rental period:");
+        System.out.println("From " + rentModel.getFrom() + " to " + rentModel.getTo());
     }
 }

@@ -25,4 +25,8 @@ public interface TerminalTransactionsDelegate {
     void return_(ReturnModel returnModel);
 
     void vehiclesInformation(ViewVehiclesModel vvm);
+
+    void dailyRentalsReport(RentReportModel rentReportModel);
+
+    void dailyRentalsBranchReport(BranchRentReportModel branchRentReportModel);
 }

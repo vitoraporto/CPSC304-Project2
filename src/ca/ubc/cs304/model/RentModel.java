@@ -17,6 +17,8 @@ public class RentModel {
     private String confNum;
     private Timestamp from;
     private Timestamp to;
+    private String vtname;
+    private String loc;
 
     public RentModel(String rid, String confNum, String cardName, String cardNo, String cardExp) {
         this.rid = rid;
@@ -64,5 +66,17 @@ public class RentModel {
 
     public Timestamp getTo() {
         return to;
+    }
+
+    public String getVtname() {
+        return vtname;
+    }
+
+    public void setVtname(String vtname){
+        this.vtname = vtname;
+    }
+
+    public String getLoc() {
+        return loc;
     }
 }

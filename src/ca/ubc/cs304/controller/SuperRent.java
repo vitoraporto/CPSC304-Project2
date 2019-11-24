@@ -2,13 +2,9 @@ package ca.ubc.cs304.controller;
 
 import ca.ubc.cs304.delegates.LoginWindowDelegate;
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
-import ca.ubc.cs304.model.ReturnModel;
-import ca.ubc.cs304.model.ViewVehiclesModel;
+import ca.ubc.cs304.model.*;
 import ca.ubc.cs304.ui.GeneralTransactions;
 import ca.ubc.cs304.database.DatabaseConnectionHandler;
-
-import ca.ubc.cs304.model.ReserveModel;
-import ca.ubc.cs304.model.RentModel;
 
 /**
  * This is the main controller class that will orchestrate everything.
@@ -72,6 +68,16 @@ public class SuperRent implements TerminalTransactionsDelegate {
 	@Override
 	public void vehiclesInformation(ViewVehiclesModel vvm) {
 		dbHandler.vehiclesInformation(vvm);
+	}
+
+	@Override
+	public void dailyRentalsReport(RentReportModel rentReportModel) {
+		dbHandler.dailyRentalsReport(rentReportModel);
+	}
+
+	@Override
+	public void dailyRentalsBranchReport(BranchRentReportModel branchRentReportModel) {
+		dbHandler.dailyRentalsBranchReport(branchRentReportModel);
 	}
 
 	/**
