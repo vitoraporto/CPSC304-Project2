@@ -1,8 +1,7 @@
 package ca.ubc.cs304.ui;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
-import ca.ubc.cs304.model.ReserveModel;
-import ca.ubc.cs304.model.VehicleModel;
+import ca.ubc.cs304.model.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -47,9 +46,7 @@ public class CustomerTransactions extends TerminalTransaction{
     }
 
     private void handleReserve() {
-        ReserveModel reserve = reserve();
-        if (reserve != null)
-            reserve.printReserveInformations();
+        reserve();
     }
 
     private void viewVehicles() {
@@ -91,7 +88,9 @@ public class CustomerTransactions extends TerminalTransaction{
         }
 
         System.out.println("Number of available vehicles:");
-        System.out.println(delegate.numberVehicles(carType,location, pickUpDate,pickUpTime,returnDate,returnTime));
+
+        ViewVehiclesModel vvm = new ViewVehiclesModel(carType, location, pickUpDate,pickUpTime,returnDate,returnTime);
+        delegate.vehiclesInformation(vvm);
 
         int choice = INVALID_INPUT;
         while (choice != 2 && choice!=1){
@@ -104,11 +103,11 @@ public class CustomerTransactions extends TerminalTransaction{
 
             System.out.println(" ");
             if (choice == 1){
-                ArrayList<VehicleModel> vehicles = delegate.vehiclesInformation(carType,location, pickUpDate,pickUpTime,returnDate,returnTime);
+                ArrayList<VehicleModel> vehicles = vvm.getVehicles();
                 System.out.println("Vehicles information:");
                 for (int i = 0; i < vehicles.size(); i++) {
                     VehicleModel vehicle = vehicles.get(i);
-                    vehicle.printInformation();
+                    System.out.println("License plate: " + vehicle.getVlicense() + " Make: " + vehicle.getMake() + " Model: " + vehicle.getModel() + " Year: " + vehicle.getYear() + " Car type: " + vehicle.getVtnmae() + " Location: " + vehicle.getLoc());
                 }
             }
         }

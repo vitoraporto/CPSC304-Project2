@@ -1,7 +1,12 @@
 package ca.ubc.cs304.ui;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
+import ca.ubc.cs304.model.VehicleModel;
 import ca.ubc.cs304.model.RentModel;
+import ca.ubc.cs304.model.ReserveModel;
+import ca.ubc.cs304.model.ReturnModel;
+import ca.ubc.cs304.model.VehicleTypeModel;
+import ca.ubc.cs304.model.CustomerModel;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,7 +21,6 @@ public class ClerkTransactions extends TerminalTransaction{
     public void login(String inputKey, TerminalTransactionsDelegate delegate) {
         this.delegate = delegate;
         if (inputKey.equals(accessKey)){
-            System.out.println("login line 19 clerkTransactions");
             clerkMenu();
         }
     }
@@ -24,7 +28,6 @@ public class ClerkTransactions extends TerminalTransaction{
     public void clerkMenu(){
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int choice = INVALID_INPUT;
-        System.out.println("clerkMenu() line 26");
         while (true){
             System.out.println("Choose one of the following options:");
             System.out.println();
@@ -98,7 +101,8 @@ public class ClerkTransactions extends TerminalTransaction{
             System.out.println("License plate:");
             plate = readLine().trim();
         }
-        delegate.return_(plate);
+        ReturnModel rm = new ReturnModel(plate);
+        delegate.return_(rm);
     }
 
     private void handleReports() {
@@ -120,19 +124,19 @@ public class ClerkTransactions extends TerminalTransaction{
                 switch (choice) {
                     case 1:
                         dailyRentalsReport();
-                        break;
+                        return;
                     case 2:
                         dailyRentalsBranchReport();
-                        break;
+                        return;
                     case 3:
                         dailyReturnsReport();
-                        break;
+                        return;
                     case 4:
                         dailyReturnsBranchReport();
-                        break;
+                        return;
                     default:
                         System.out.println(WARNING_TAG + " The number that you entered was not a valid option.");
-                        break;
+                        return;
                 }
             }
         }
@@ -164,8 +168,9 @@ public class ClerkTransactions extends TerminalTransaction{
     }
 
     private void rentWithNoReservation() {
-        String conf_num = reserve().getConfirmationNumber();
-        rent(conf_num);
+        Integer confNum = (int)(Math.random() * 10000);
+        String c = Integer.toString(confNum);
+        rent(c);
     }
 
     private void rent(String conf_num){
@@ -173,24 +178,26 @@ public class ClerkTransactions extends TerminalTransaction{
 
         String card_name = null;
         while (card_name == null || card_name.length() <= 0){
-            System.out.print("    Name:");
+            System.out.print("    Name: ");
             card_name = readLine().trim();
         }
 
         String card_no = null;
         while (card_no == null || card_no.length() <= 0){
-            System.out.print("    Number:");
+            System.out.print("    Number (no -'s): ");
             card_no = readLine().trim();
         }
 
         String exp_date = null;
         while (exp_date == null || exp_date.length() <= 0){
-            System.out.print("    Expiration date:");
+            System.out.print("    Expiration date (MM/YY): ");
             exp_date = readLine().trim();
         }
 
-        RentModel rent = delegate.rent(conf_num,card_name,card_name,exp_date);
-        if (rent != null)
-            rent.printRentInformations();
+        Integer r = (int)(Math.random() * 10000);
+        String rid = Integer.toString(r);
+
+        RentModel rentModel = new RentModel(rid, conf_num, card_name, card_no, exp_date);
+        delegate.rent(rentModel);
     }
 }

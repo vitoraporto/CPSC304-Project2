@@ -1,51 +1,43 @@
 package ca.ubc.cs304.model;
 
+/**
+ * The intent for this class is to update/store information about a single
+ * reservation
+ */
+import java.sql.Timestamp;
+
 public class ReserveModel {
-    private final String confirmationNumber;
-    private final String location;
-    private final String carType;
-    private final String pickUpDate;
-    private final String returnDate;
+    private final String confNum;
+    private final String vtname;
+    private final String cellphone;
+    private final Timestamp from;
+    private final Timestamp to;
 
-
-    public ReserveModel(String confirmationNumber, String location, String carType, String pickUpDate, String returnDate) {
-        this.confirmationNumber = confirmationNumber;
-        this.location = location;
-        this.carType = carType;
-        this.pickUpDate = pickUpDate;
-        this.returnDate = returnDate;
+    public ReserveModel(String confNum, String vtname, String cellphone, Timestamp from, Timestamp to) {
+        this.confNum = confNum;
+        this.vtname = vtname;
+        this.cellphone = cellphone;
+        this.from = from;
+        this.to = to;
     }
 
-    public String getConfirmationNumber() {
-        return confirmationNumber;
+    public String getConfNum() {
+        return confNum;
     }
 
-    public String getLocation() {
-        return location;
+    public String getVtname() {
+        return vtname;
     }
 
-    public String getCarType() {
-        return carType;
+    public String getCellphone() {
+        return cellphone;
     }
 
-    public String getPickUpDate() {
-        return pickUpDate;
+    public Timestamp getFrom() {
+        return from;
     }
 
-    public String getReturnDate() {
-        return returnDate;
-    }
-
-    public void printReserveInformations() {
-        System.out.println("Confirmation number:");
-        System.out.println(getConfirmationNumber());
-        System.out.println("Location:");
-        System.out.println(getLocation());
-        System.out.println("Car type:");
-        System.out.println(getCarType());
-        System.out.println("Pickup Date:");
-        System.out.println(getPickUpDate());
-        System.out.println("Return date:");
-        System.out.println(getReturnDate());
+    public Timestamp getTo() {
+        return to;
     }
 }

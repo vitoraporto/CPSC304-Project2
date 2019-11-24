@@ -1,50 +1,68 @@
 package ca.ubc.cs304.model;
 
+/**
+ * The intent for this class is to update/store information about a single
+ * rental
+ */
+import java.sql.Timestamp;
+
 public class RentModel {
-    private final String confirmationNumber;
-    private final String reservationDate;
-    private final String carType;
-    private final String location;
-    private final String duration;
+    private String rid;
+    private String vid;
+    private String cellphone;
+    private String cardName;
+    private String cardNo;
+    private String cardExp;
+    private int odometer;
+    private String confNum;
+    private Timestamp from;
+    private Timestamp to;
 
-    public RentModel(String confirmationNumber, String reservationDate, String carType, String location, String duration) {
-        this.confirmationNumber = confirmationNumber;
-        this.reservationDate = reservationDate;
-        this.carType = carType;
-        this.location = location;
-        this.duration = duration;
+    public RentModel(String rid, String confNum, String cardName, String cardNo, String cardExp) {
+        this.rid = rid;
+        this.cardName = cardName;
+        this.cardNo = cardNo;
+        this.cardExp = cardExp;
+        this.confNum = confNum;
     }
 
-    public String getConfirmationNumber() {
-        return confirmationNumber;
+    public String getRid() {
+        return rid;
     }
 
-    public String getReservationDate() {
-        return reservationDate;
+    public String getVid() {
+        return vid;
     }
 
-    public String getCarType() {
-        return carType;
+    public String getCellphone() {
+        return cellphone;
     }
 
-    public String getLocation() {
-        return location;
+    public String getCardName() {
+        return cardName;
     }
 
-    public String getDuration() {
-        return duration;
+    public String getCardNo() {
+        return cardNo;
     }
 
-    public void printRentInformations() {
-        System.out.println("Confirmation number:");
-        System.out.println(getConfirmationNumber());
-        System.out.println("Reservation date:");
-        System.out.println(getReservationDate());
-        System.out.println("Car type:");
-        System.out.println(getCarType());
-        System.out.println("Location:");
-        System.out.println(getLocation());
-        System.out.println("Duration of rental period:");
-        System.out.println(getDuration());
+    public String getCardExp() {
+        return cardExp;
+    }
+
+    public int getOdometer() {
+        return odometer;
+    }
+
+    public String getConfNum() {
+        return confNum;
+    }
+
+    public Timestamp getFrom() {
+        return from;
+    }
+
+    public Timestamp getTo() {
+        return to;
     }
 }
