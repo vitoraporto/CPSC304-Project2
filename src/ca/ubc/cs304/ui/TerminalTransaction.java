@@ -68,8 +68,19 @@ public abstract class TerminalTransaction {
         Integer confNum = (int)(Math.random() * 10000);
         String c = Integer.toString(confNum);
 
-        ReserveModel reserveModel = new ReserveModel(c, carType, cellphone, from, to);
+        ReserveModel reserveModel = new ReserveModel(c, carType, cellphone, from, to, location);
         delegate.reserve(reserveModel);
+
+        System.out.println("Confirmation number:");
+        System.out.println(reserveModel.getConfNum());
+        System.out.println("Location:");
+        System.out.println(reserveModel.getLocation());
+        System.out.println("Car type:");
+        System.out.println(reserveModel.getVtname());
+        System.out.println("Pickup Date:");
+        System.out.println(reserveModel.getFrom());
+        System.out.println("Return date:");
+        System.out.println(reserveModel.getTo());
     }
 
     int readInteger(boolean allowEmpty) {

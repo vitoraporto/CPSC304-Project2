@@ -87,10 +87,11 @@ public class CustomerTransactions extends TerminalTransaction{
             returnTime = readLine().trim();
         }
 
-        System.out.println("Number of available vehicles:");
+        System.out.print("Number of available vehicles:");
 
         ViewVehiclesModel vvm = new ViewVehiclesModel(carType, location, pickUpDate,pickUpTime,returnDate,returnTime);
         delegate.vehiclesInformation(vvm);
+        System.out.println(vvm.getVehicles().size());
 
         int choice = INVALID_INPUT;
         while (choice != 2 && choice!=1){

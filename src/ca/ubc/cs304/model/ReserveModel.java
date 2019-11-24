@@ -12,13 +12,15 @@ public class ReserveModel {
     private final String cellphone;
     private final Timestamp from;
     private final Timestamp to;
+    private final String location;
 
-    public ReserveModel(String confNum, String vtname, String cellphone, Timestamp from, Timestamp to) {
+    public ReserveModel(String confNum, String vtname, String cellphone, Timestamp from, Timestamp to, String location) {
         this.confNum = confNum;
         this.vtname = vtname;
         this.cellphone = cellphone;
         this.from = from;
         this.to = to;
+        this.location = location;
     }
 
     public String getConfNum() {
@@ -39,5 +41,9 @@ public class ReserveModel {
 
     public Timestamp getTo() {
         return to;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }
